@@ -1,54 +1,48 @@
 #include <iostream>
 #include <Windows.h>
+#include <cstdlib>
+#include <ctime>
+
 
 using namespace std;
 
-struct student {
-	char name[50];
-};
-
-student drop(student* ptrg, char n[20]) {
-	*ptrg->name = *n;
-	for (int i = 0; i < 20 && n[i] != '\0'; i++) {
-		ptrg->name[i] = ' ';
-	}
-	for (int i = 0; i < 20 && n[i] != '\0'; i++) {
-		ptrg->name[i] = n[i];
-	}
-	return *ptrg;
+void under(char* ptr, int size) {
+    for (int i = 0; i < size; i++) {
+        if (ptr[i] == ' ') {
+            ptr[i] = '_';
+        }
+    }
 }
 
 int main() {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	int choose;
-	cout << "выберите задание" << '\n';
-	cout << "1" << '\n';
-	cout << "2" << '\n';
-	cin >> choose;
-	if (choose == 1) {
-		int size = 10;
-		int j = 10;
-		const char* words[] = { "C++", "is", "one", "of", "the", "world's", "most", "popular", "programming", "languages" };
-		for (int i = 0; i < (size / 2); i++)
-		{
-			const char* f = words[j - 1];
-			words[j - 1] = words[i];
-			words[i] = f;
-			j--;
-		}
-		for (int i = 0; i < size; i++)
-		{
-			cout << words[i] << '\t';
-		}
-	}
-	if (choose == 2) {
-		student g = { "Гена" };
-		char n[20];
-		cout << "Введите параметр: ";
-		cin >> n;
-		student* ptr = &g;
-		student john = drop(ptr, n);
-		cout << john.name;
-	}
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    char a[]{ "C++ is one of the world's popular programming languages" };
+    int size = sizeof(a) - 1;
+    under(a, size);
+    cout << a << endl;
+
+    char b[]{};
+    char arr[]{ "Четное" };
+    int size1 = sizeof(arr) - 1;
+    int j = size1 - 1;
+
+    int d = size1 / 2;
+    for (int i = 0; i < d; i++) {
+        b = b + arr[i];
+        }
+
+    cout << b << endl;
+
+    for (int i = 0; i < (size1 / 2); i++)
+    {
+        char f = arr[j];
+        arr[j] = arr[i];
+        arr[i] = f;
+        j--;
+    }
+    
+    cout << arr << endl;
+
+    return 0;
 }
