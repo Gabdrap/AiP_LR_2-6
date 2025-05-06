@@ -4,18 +4,18 @@
 using namespace std;
 
 struct student {
-	char name[50];
+	char name[20];
 };
 
-student drop(student* ptrg, char n[20]) {
-	*ptrg->name = *n;
-	for (int i = 0; i < 20 && n[i] != '\0'; i++) {
-		ptrg->name[i] = ' ';
+student drop(student* ptr, char n[20]) {
+	for (int i = 0; i < 20; i++) {
+		ptr->name[i] = ' ';
 	}
 	for (int i = 0; i < 20 && n[i] != '\0'; i++) {
-		ptrg->name[i] = n[i];
+		ptr->name[i] = n[i];
 	}
-	return *ptrg;
+	ptr->name[19] = '\0';
+	return *ptr;
 }
 
 int main() {
@@ -39,7 +39,7 @@ int main() {
 		}
 		for (int i = 0; i < size; i++)
 		{
-			cout << words[i] << '\t';
+			cout << words[i] << ' ';
 		}
 	}
 	if (choose == 2) {
@@ -49,6 +49,6 @@ int main() {
 		cin >> n;
 		student* ptr = &g;
 		student john = drop(ptr, n);
-		cout << john.name;
+		cout << john.name << endl;
 	}
 }
