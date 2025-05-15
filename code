@@ -27,18 +27,16 @@ int main() {
 	cout << "2" << '\n';
 	cin >> choose;
 	if (choose == 1) {
-		int size = 10;
-		int j = 10;
 		const char* words[] = { "C++", "is", "one", "of", "the", "world's", "most", "popular", "programming", "languages" };
-		for (int i = 0; i < (size / 2); i++)
-		{
-			const char* f = words[j - 1];
-			words[j - 1] = words[i];
-			words[i] = f;
-			j--;
+		int size = sizeof(words) / sizeof(words[0]);
+		
+		for (int i = 0; i < (size / 2); i++) {
+			const char* temp = words[i];
+			words[i] = words[size - 1 - i];
+			words[size - 1 - i] = temp;
 		}
-		for (int i = 0; i < size; i++)
-		{
+		
+		for (int i = 0; i < size; i++) {
 			cout << words[i] << ' ';
 		}
 	}
